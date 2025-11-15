@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refugio de Guanaqueros – Cabañas y Turismo</title>
+
+    <!-- 
+    ╔═══════════════════════════════════════════════════════════╗
+    ║  GUÍA DE EDICIÓN PARA EL CLIENTE                          ║
+    ║  ────────────────────────────────────────────────────────  ║
+    ║  Este archivo es la página principal del sitio web.       ║
+    ║                                                            ║
+    ║  PARA EDITAR CONTENIDO:                                   ║
+    ║  • Textos de secciones → Ver carpeta 'sections/'          ║
+    ║  • Estilos visuales → Ver carpeta 'css/'                  ║
+    ║  • Funcionalidades → Ver carpeta 'js/'                    ║
+    ║                                                            ║
+    ║  ⚠️ NO ELIMINES las etiquetas <link> y <script>           ║
+    ║  ⚠️ NO MODIFIQUES el <head> a menos que sepas qué haces   ║
+    ╚═══════════════════════════════════════════════════════════╝
+    -->
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThsm9QsaIHv9lgd9Xds3SHXe54m4nff7dkgw&s" type="image/x-icon">
+
+    <!-- Configuración de Colores de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0077B6',   // Azul marino
+                        secondary: '#00B4D8', // Turquesa
+                        accent: '#FFC300',    // Amarillo sol
+                        neutral: '#F8F9FA',   // Gris suave
+                        textdark: '#2C3E50'   // Gris azulado
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Estilos CSS Personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="bg-white">
+
+    <!-- ========== HEADER / NAVEGACIÓN ========== -->
+    <!-- 
+    ╔════════════════════════════════════════════════╗
+    ║  EDITAR NAVEGACIÓN:                            ║
+    ║  • Logo: Reemplaza la imagen en el <img>       ║
+    ║  • Enlaces: Modifica los textos en cada <a>    ║
+    ║  • Botón Reservar: Cambia el href si necesitas ║
+    ╚════════════════════════════════════════════════╝
+    -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="nav-link-page">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThsm9QsaIHv9lgd9Xds3SHXe54m4nff7dkgw&s" alt="Logo Refugio de Guanaqueros" class="h-12 md:h-16">
+            </a>
+
+            <!-- Menú Desktop -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="nav-link active" data-section="home">Inicio</a>
+                <a href="#cabañas" class="nav-link" data-section="cabañas">Cabañas</a>
+                <a href="#experiencias" class="nav-link" data-section="experiencias">Experiencias</a>
+                <a href="#galeria" class="nav-link" data-section="galeria">Galería</a>
+                <a href="cotiza.html" class="nav-link">Cotiza con Nosotros</a>
+                <a href="#contacto" class="nav-link" data-section="contacto">Contacto</a>
+                <a href="https://refugiodeguanaqueros.cl/" target="_blank" class="bg-accent text-textdark font-semibold px-5 py-2 rounded-full hover:bg-yellow-400 transition-colors">
+                    Reservar ahora
+                </a>
+            </div>
+
+            <!-- Botón Menú Móvil -->
+            <button id="mobile-menu-button" class="md:hidden text-textdark text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- Menú Móvil (Oculto) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg py-4">
+            <a href="#home" class="nav-link block text-center px-4 py-3 text-textdark hover:bg-neutral" data-section="home">Inicio</a>
+            <a href="#cabañas" class="nav-link block text-center px-4 py-3 text-textdark hover:bg-neutral" data-section="cabañas">Cabañas</a>
+            <a href="#experiencias" class="nav-link block text-center px-4 py-3 text-textdark hover:bg-neutral" data-section="experiencias">Experiencias</a>
+            <a href="#galeria" class="nav-link block text-center px-4 py-3 text-textdark hover:bg-neutral" data-section="galeria">Galería</a>
+            <a href="cotiza.html" class="block text-center px-4 py-3 text-textdark hover:bg-neutral">Cotiza con Nosotros</a>
+            <a href="#contacto" class="nav-link block text-center px-4 py-3 text-textdark hover:bg-neutral" data-section="contacto">Contacto</a>
+            <a href="https://refugiodeguanaqueros.cl/" target="_blank" class="block text-center bg-accent text-textdark font-semibold mx-4 mt-2 py-3 rounded-full hover:bg-yellow-400 transition-colors">
+                Reservar ahora
+            </a>
+        </div>
+    </header>
+
+    <!-- ========== CONTENIDO PRINCIPAL ========== -->
+    <main>
+        
+        <!-- ========== HERO SECTION ========== -->
+        <!-- 
+        ╔════════════════════════════════════════════════╗
+        ║  EDITAR HERO:                                  ║
+        ║  • Imagen de fondo: style="background-image"   ║
+        ║  • Título principal: <h1>                      ║
+        ║  • Descripción: <p>                            ║
+        ║  • Botones: <a> dentro del div.flex            ║
+        ╚════════════════════════════════════════════════╝
+        -->
+        <section id="home" class="relative h-[70vh] md:h-[90vh] flex items-center justify-center bg-cover bg-center" style="background-image: url('https://i0.wp.com/apuntesyviajes.com/wp-content/uploads/2019/01/7104660683_d3acc05da6_b.jpg?fit=1024%2C506');">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="relative z-10 text-center p-4">
+                
+                <p class="text-secondary text-lg md:text-xl font-semibold mb-4 tracking-widest uppercase fade-in" style="transition-delay: 200ms;">
+                    Bienvenidos a
+                </p>
+                <h1 class="text-4xl md:text-7xl font-bold text-white leading-tight fade-in" style="transition-delay: 400ms;">
+                    Refugio de Guanaqueros
+                </h1>
+                
+                <p class="text-white/90 text-xl md:text-2xl mt-4 mb-8 max-w-2xl mx-auto fade-in" style="transition-delay: 500ms;">
+                    Tu refugio junto al mar. Vive una escapada inolvidable en un entorno natural único.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in" style="transition-delay: 600ms;">
+                    <a href="https://refugiodeguanaqueros.cl/" target="_blank" class="bg-accent text-textdark font-semibold px-8 py-3 rounded-full text-lg hover:bg-yellow-400 transition-colors transform hover:scale-105 duration-300">
+                        Reservar ahora
+                    </a>
+                    <a href="#cabañas" class="bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-full text-lg hover:bg-white hover:text-textdark transition-colors duration-300 transform hover:scale-105">
+                        Ver Cabañas
+                    </a>
+                </div>
+
+            </div>
+            
+            <!-- Botón Scroll Down -->
+            <a href="#cabañas" class="scroll-down-btn" aria-label="Scroll down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+
+        </section>
+
+        <!-- ========== SECCIÓN CABAÑAS ========== -->
+        <!-- 
+        ╔════════════════════════════════════════════════╗
+        ║  EDITAR CABAÑAS:                               ║
+        ║  • Imágenes: src="" en cada <img>              ║
+        ║  • Nombres: <h3>                               ║
+        ║  • Precios: <p class="text-xl font-bold">      ║
+        ║  • Descripción: <p class="text-textdark/80">   ║
+        ║                                                ║
+        ║  ⚠️ NOTA: Las imágenes Plus y Full están       ║
+        ║           intercambiadas según pedido          ║
+        ╚════════════════════════════════════════════════╝
+        -->
+        <section id="cabañas" class="pt-16 md:pt-24 pb-16 md:pb-24 bg-neutral">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12 fade-in">
+                    <p class="text-secondary text-sm font-semibold tracking-widest uppercase mb-2">Nuestro Alojamiento</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Nuestras Cabañas</h2>
+                    <p class="text-lg text-textdark/90">
+                        Contamos con 12 cabañas full equipadas para 2 hasta 12 personas. Disfruta de la comodidad y el descanso en un entorno natural único.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Cabaña 1: Refugio Plus (AHORA USA IMÁGENES DE FULL) -->
+                    <div class="cabana-card bg-white rounded-lg shadow-lg overflow-hidden fade-in transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl" style="transition-delay: 100ms;">
+                        <div class="cabana-image-container">
+                            <img src="./imagenes/refugio-full-1.jpeg" alt="Refugio Plus" class="img-back">
+                            <img src="./imagenes/refugio-full-2.jpeg" alt="Refugio Plus" class="img-top">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-primary mb-2">Refugio Plus</h3>
+                            <p class="text-xl font-bold text-secondary mb-3">Desde $75.000</p>
+                            <p class="text-textdark/80 mb-6 text-sm">Terraza, Tinaja (sin límite), Cama de Cuarzo, Piscina y Estacionamiento.</p>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="cotiza.html" class="flex-1 text-center bg-transparent border-2 border-secondary text-secondary font-medium px-4 py-2 rounded-full hover:bg-secondary hover:text-white transition-colors">
+                                    Ver precios
+                                </a>
+                                <a href="https://refugiodeguanaqueros.cl/" target="_blank" class="flex-1 text-center bg-accent text-textdark font-semibold px-4 py-2 hover:bg-yellow-400 transition-colors flex items-center justify-center">
+                                    Reservar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cabaña 2: Refugio VIP -->
+                    <div class="cabana-card bg-white rounded-lg shadow-lg overflow-hidden fade-in transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl" style="transition-delay: 200ms;">
+                        <div class="cabana-image-container">
+                            <img src="./imagenes/refugio-vip-1.jpeg" alt="Refugio VIP" class="img-back">
+                            <img src="./imagenes/refugio-vip-2.jpeg" alt="Refugio VIP" class="img-top">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-primary mb-2">Refugio VIP</h3>
+                            <p class="text-xl font-bold text-secondary mb-3">Desde $85.000</p>
+                            <p class="text-textdark/80 mb-6 text-sm">Todo en Plus + Acceso a Sauna y Estacionamiento.</p>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="cotiza.html" class="flex-1 text-center bg-transparent border-2 border-secondary text-secondary font-medium px-4 py-2 rounded-full hover:bg-secondary hover:text-white transition-colors">
+                                    Ver precios
+                                </a>
+                                <a href="https://refugiodeguanaqueros.cl/" target="_blank" class="flex-1 text-center bg-accent text-textdark font-semibold px-4 py-2 hover:bg-yellow-400 transition-colors flex items-center justify-center">
+                                    Reservar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cabaña 3: Refugio Full (AHORA USA IMÁGENES DE PLUS) -->
+                    <div class="cabana-card bg-white rounded-lg shadow-lg overflow-hidden fade-in transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl" style="transition-delay: 300ms;">
+                        <div class="cabana-image-container">
+                            <img src="./imagenes/refugio-plus-1.jpeg" alt="Refugio Full" class="img-back">
+                            <img src="./imagenes/refugio-plus-2.jpeg" alt="Refugio Full" class="img-top">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-primary mb-2">Refugio Full</h3>
+                            <p class="text-xl font-bold text-secondary mb-3">Desde $100.000</p>
+                            <p class="text-textdark/80 mb-6 text-sm">Todo en VIP + Piscina Privada y Sesión de Sauna.</p>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="cotiza.html" class="flex-1 text-center bg-transparent border-2 border-secondary text-secondary font-medium px-4 py-2 rounded-full hover:bg-secondary hover:text-white transition-colors">
+                                    Ver precios
+                                </a>
+                                <a href="https://refugiodeguanaqueros.cl/" target="_blank" class="flex-1 text-center bg-accent text-textdark font-semibold px-4 py-2 hover:bg-yellow-400 transition-colors flex items-center justify-center">
+                                    Reservar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cabaña 4: Domo VIP Privado -->
+                    <div class="cabana-card bg-white rounded-lg shadow-lg overflow-hidden fade-in transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl" style="transition-delay: 400ms;">
+                        <div class="cabana-image-container">
+                            <img src="./imagenes/domo-vip-1.jpeg" alt="Domo VIP Privado" class="img-back">
+                            <img src="./imagenes/domo-vip-2.jpeg" alt="Domo VIP Privado" class="img-top">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-primary mb-2">Domo VIP Privado</h3>
+                            <p class="text-xl font-bold text-secondary mb-3">Desde $100.000</p>
+                            <p class="text-textdark/80 mb-6 text-sm">Terraza, Tinaja (sin límite), Piscina Privada, Cama de Cuarzo y Estacionamiento.</p>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="cotiza.html" class="flex-1 text-center bg-transparent border-2 border-secondary text-secondary font-medium px-4 py-2 rounded-full hover:bg-secondary hover:text-white transition-colors">
+                                    Ver precios
+                                </a>
+                                <a href="https://refugiodeguanaqueros.cl/" target="_blank" class="flex-1 text-center bg-accent text-textdark font-semibold px-4 py-2 hover:bg-yellow-400 transition-colors flex items-center justify-center">
+                                    Reservar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== EXPERIENCIAS ========== -->
+        <!-- 
+        ╔════════════════════════════════════════════════╗
+        ║  EDITAR EXPERIENCIAS:                          ║
+        ║  • Iconos: Clase dentro de <i>                 ║
+        ║  • Nombres: <h3>                               ║
+        ║  • Imagen inferior: src en <img>               ║
+        ╚════════════════════════════════════════════════╝
+        -->
+        <section id="experiencias" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12 fade-in">
+                    <p class="text-secondary text-sm font-semibold tracking-widest uppercase mb-2">Tu Estadía</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Vive la Experiencia</h2>
+                    <p class="text-lg text-textdark/90">
+                        Todas nuestras cabañas están diseñadas para tu máximo confort. Cada una incluye:
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+                    <div class="flex flex-col items-center fade-in transform transition-transform duration-300 hover:scale-110" style="transition-delay: 50ms;">
+                        <div class="bg-secondary/10 text-secondary text-4xl w-24 h-24 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-hot-tub-person"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-textdark mt-4">Tinaja Privada</h3>
+                    </div>
+                    <div class="flex flex-col items-center fade-in transform transition-transform duration-300 hover:scale-110" style="transition-delay: 100ms;">
+                        <div class="bg-secondary/10 text-secondary text-4xl w-24 h-24 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-bed"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-textdark mt-4">Cama de Cuarzo</h3>
+                    </div>
+                    <div class="flex flex-col items-center fade-in transform transition-transform duration-300 hover:scale-110" style="transition-delay: 150ms;">
+                        <div class="bg-secondary/10 text-secondary text-4xl w-24 h-24 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-person-swimming"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-textdark mt-4">Acceso a Piscina</h3>
+                    </div>
+                    <div class="flex flex-col items-center fade-in transform transition-transform duration-300 hover:scale-110" style="transition-delay: 200ms;">
+                        <div class="bg-secondary/10 text-secondary text-4xl w-24 h-24 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-fire-burner"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-textdark mt-4">Terraza con Parrilla</h3>
+                    </div>
+                    <div class="flex flex-col items-center fade-in transform transition-transform duration-300 hover:scale-110" style="transition-delay: 250ms;">
+                        <div class="bg-secondary/10 text-secondary text-4xl w-24 h-24 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-textdark mt-4">WiFi</h3>
+                    </div>
+                    <div class="flex flex-col items-center fade-in transform transition-transform duration-300 hover:scale-110" style="transition-delay: 300ms;">
+                        <div class="bg-secondary/10 text-secondary text-4xl w-24 h-24 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-spa"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-textdark mt-4">Sauna Spa (Opcional)</h3>
+                    </div>
+                </div>
+
+                <div class="mt-16 md:mt-24 max-w-5xl mx-auto fade-in" style="transition-delay: 500ms;">
+                    <img src="./imagenes/vista-piscina.jpeg" alt="Vista de la Piscina del Refugio" class="w-full h-auto object-cover rounded-lg shadow-xl">
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========== GALERÍA ========== -->
+        <!-- 
+        ╔════════════════════════════════════════════════╗
+        ║  EDITAR GALERÍA:                               ║
+        ║  • Imágenes masonry: src en cada <img>         ║
+        ║  • Carruseles: background-image en .carousel-slide ║
+        ║                                                ║
+        ║  ⚠️ CUIDADO: No elimines clases o IDs          ║
+        ╚════════════════════════════════════════════════╝
+        -->
+        <section id="galeria" class="py-16 md:py-24 bg-gradient-to-b from-gray-100 to-gray-200">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12 fade-in">
+                    <p class="text-secondary text-sm font-semibold tracking-widest uppercase mb-2">Momentos</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Nuestra Galería</h2>
+                    <p class="text-lg text-textdark/90">
+                        Conoce nuestros espacios, el entorno y la magia de Guanaqueros.
+                    </p>
+                </div>
+
+                <!-- Galería Masonry -->
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <!-- Columna 1 -->
+                    <div class="grid gap-4">
+                        <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/piscina-1.jpeg" alt="Piscina del refugio">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Piscina Principal</h4></div>
+                        </div>
+                        <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/entorno-natural.jpeg" alt="Entorno natural">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Entorno Natural</h4></div>
+                        </div>
+                        <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/imagen-general-1.jpeg" alt="Interior Sauna">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Interior Sauna</h4></div>
+                        </div>
+                    </div>
+                    <!-- Columna 2 -->
+                    <div class="grid gap-4">
+                        <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/tinaja-1.jpeg" alt="Tinaja caliente">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Tinaja Privada</h4></div>
+                        </div>
+                        <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/interior-cabaña.jpeg" alt="Interior de una cabaña">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Interior Cabaña</h4></div>
+                        </div>
+                        <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/imagen-general-2.jpeg" alt="Tinaja">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Tinaja</h4></div>
+                        </div>
+                    </div>
+                    <!-- Columna 3 -->
+                    <div class="grid gap-4">
+                        <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/vista-terraza.jpeg" alt="Vista desde la terraza">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Vista Terraza</h4></div>
+                        </div>
+                        <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/parrilla.jpeg" alt="Zona de parrillas">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Parrillas</h4></div>
+                        </div>
+                         <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/imagen-general-3.jpeg" alt="Piscina Privada">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Piscina Privada</h4></div>
+                        </div>
+                    </div>
+                    <!-- Columna 4 -->
+                    <div class="grid gap-4">
+                        <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/playa-guanaqueros.jpg" alt="Playa de Guanaqueros">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Playa Cercana</h4></div>
+                        </div>
+                        <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/guanaqueros.jpeg" alt="Atardecer en el refugio">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Atardecer</h4></div>
+                        </div>
+                         <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/imagen-general-4.jpeg" alt="Baño Privado VIP">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Baño Privado VIP</h4></div>
+                        </div>
+                    </div>
+                    <!-- Columna 5 -->
+                    <div class="grid gap-4">
+                        <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/sauna.jpeg" alt="Sauna">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Sauna</h4></div>
+                        </div>
+                        <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/cama-de-cuarzo.jpeg" alt="Cama de Cuarzo">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Cama de Cuarzo</h4></div>
+                        </div>
+                         <div class="fade-in gallery-item h-48 md:h-64">
+                            <img class="rounded-lg shadow-md" src="./imagenes/galeria-general/imagen-general-5.jpeg" alt="Dormitorio">
+                            <div class="gallery-overlay"><h4 class="font-semibold">Dormitorio</h4></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carruseles por Refugio -->
+                <div class="mt-16 md:mt-24 space-y-16">
+                    
+                    <!-- Carousel 1: Refugio 1 -->
+                    <div class="fade-in">
+                        <h3 class="text-2xl md:text-3xl font-bold text-primary mb-6 text-center">Galería Refugio 1</h3>
+                        <div class="carousel-container h-[300px] md:h-[500px] w-full max-w-5xl mx-auto bg-gray-900 rounded-lg shadow-xl" id="carousel-ref1">
+                            <div class="carousel-slide active" style="background-image: url('./imagenes/galeria-refugio-1/1.jpeg'); border-radius: 0.5rem;"></div>
+                            <div class="carousel-slide" style="background-image: url('./imagenes/galeria-refugio-1/2.jpeg'); border-radius: 0.5rem;"></div>
+                            <div class="carousel-slide" style="background-image: url('./imagenes/galeria-refugio-1/3.jpeg'); border-radius: 0.5rem;"></div>
+                            <div class="carousel-slide" style="background-image: url('./imagenes/galeria-refugio-1/4.jpeg'); border-radius: 0.5rem;"></div>
+                            <div class="carousel-slide" style="background-image: url('./imagenes/galeria-refugio-1/5.jpeg'); border-radius: 0.5rem;"></div>
+                            <button class="carousel-btn prev" onclick="window.moveSlide('carousel-ref1', -1)">&#10094;</button>
+                            <button class="carousel-btn next" onclick="window.moveSlide('carousel-ref1', 1)">&#10095;</button>
+                        </div>
+                    </div>
+
+                    <!-- Carousel 2: Refugio 2 -->
+                    <div class="fade-in">
+                        <h3 class="text-2xl md:text-3xl font-bold text-primary mb-6 text-center">Galería Refugio 2</h3>
+                        <div class="carousel-container h-[300px] md:h-[500px] w-full max-w-5xl mx-auto bg-gray-900 rounded-lg shadow-xl" id="carousel-ref2">
+                            <div class="carousel-slide active" style="background-image: url('./imagenes/galeria-refugio-2/1.jpeg'); border-radius: 0.5rem;"></div>
+                            <div class="carousel-slide" style="background-image: url('./imagenes/galeria-refugio-2/2.jpeg'); border-radius: 0.5rem;"></div>
+                            <div class="carousel-slide" style="background-image: url('./imagenes/galeria-refugio-2/3.jpeg'); border-radius: 0.5rem;"></div>
+                            <div class="carousel-slide" style="background-image: url('./imagenes/galeria-refugio-2/4.jpeg'); border-radius: 0.5rem;"></div>
+                            <div class="carousel-slide" style="background-image: url('./imagenes/galeria-refugio-2/5.jpeg'); border-radius: 0.5rem;"></div>
+                            <button class="carousel-btn prev" onclick="window.moveSlide('carousel-ref2', -1)">&#10094;</button>
+                            <button class="carousel-btn next" onclick="window.moveSlide('carousel-ref2', 1)">&#10095;</button>
+                        </div>
+                    </div>
+
+                    <!-- Carousel 3: Domo VIP -->
+                    <div class="fade-in">
+                        <h3 class="text-2xl md:text-3xl font-bold text-primary mb-6 text-center">Galería Domo VIP</h3>
+                        <div class="carousel-container h-[300px] md:h-[500px] w-full max-w-5xl mx-auto bg-gray-900 rounded-lg shadow-xl" id="carousel-domo1">
+                            <div class="carousel-slide active" style="background-image: url('./imagenes/galeria-domo-vip/1.jpeg'); border-radius: 0.5rem;"></div>
+                            <div class="carousel-slide" style="background-image: url('./imagenes/galeria-domo-vip/2.jpeg'); border-radius: 0.5rem;"></div>
+                            <div class="carousel-slide" style="background-image: url('./imagenes/galeria-domo-vip/3.jpeg'); border-radius: 0.5rem;"></div>
+                            <div class="carousel-slide" style="background-image: url('./imagenes/galeria-domo-vip/4.jpeg'); border-radius: 0.5rem;"></div>
+                            <div class="carousel-slide" style="background-image: url('./imagenes/galeria-domo-vip/5.jpeg'); border-radius: 0.5rem;"></div>
+                            <button class="carousel-btn prev" onclick="window.moveSlide('carousel-domo1', -1)">&#10094;</button>
+                            <button class="carousel-btn next" onclick="window.moveSlide('carousel-domo1', 1)">&#10095;</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CONTACTO ========== -->
+        <!-- 
+        ╔════════════════════════════════════════════════╗
+        ║  EDITAR CONTACTO:                              ║
+        ║  • El formulario usa EmailJS automáticamente   ║
+        ║  • Configura tus credenciales en               ║
+        ║    js/contact-form.js                          ║
+        ║  • Teléfonos y emails: Edita los <a href="">   ║
+        ║  • Mapas: Cambia los src="" si es necesario    ║
+        ╚════════════════════════════════════════════════╝
+        -->
+        <section id="contacto" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12 fade-in">
+                    <p class="text-secondary text-sm font-semibold tracking-widest uppercase mb-2">Hablemos</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Contáctanos</h2>
+                    <p class="text-lg text-textdark/90">
+                        ¿Tienes alguna consulta? Escríbenos y te responderemos a la brevedad.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                    
+<div class="fade-in bg-neutral p-8 rounded-lg shadow-lg">
+    <h3 class="text-2xl font-semibold text-primary mb-6">Envíanos tu Consulta</h3>
+    <form id="contact-form" action="mailto:contacto@refugiodeguanaqueros.cl" method="get" enctype="text/plain" class="space-y-4">
+        
+        <div>
+            <label for="name" class="block text-sm font-medium text-textdark mb-1">Nombre completo</label>
+            <input type="text" id="name" name="Nombre" required class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary text-sm">
+        </div>
+        
+        <div>
+            <label for="email" class="block text-sm font-medium text-textdark mb-1">Correo electrónico</label>
+            <input type="email" id="email" name="De" required class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary text-sm">
+        </div>
+        
+        <div>
+            <label for="phone" class="block text-sm font-medium text-textdark mb-1">Teléfono</label>
+            <input type="tel" id="phone" name="Teléfono" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary text-sm">
+        </div>
+        
+        <div>
+            <label for="message" class="block text-sm font-medium text-textdark mb-1">Mensaje / consulta</label>
+            <textarea id="message" name="body" rows="3" required class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary text-sm resize-none"></textarea>
+        </div>
+
+        <input type="hidden" name="subject" value="Nueva Solicitud desde el Formulario Web">
+
+        <div class="border-t border-gray-300 pt-4 mt-4">
+            <button type="button" id="toggle-details" class="flex items-center justify-between w-full text-left hover:text-secondary transition-colors">
+                <span class="font-semibold text-textdark flex items-center">
+                    <i class="fas fa-chevron-right mr-2 transition-transform" id="toggle-icon"></i>
+                    ¿Quieres solicitar un servicio específico?
+                </span>
+            </button>
+            
+            <div id="additional-details" class="hidden mt-4 space-y-4 pl-6 border-l-2 border-secondary">
+                <div>
+                    <label for="persons" class="block text-sm font-medium text-textdark mb-1">Número de personas</label>
+                    <select id="persons" name="Personas" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary text-sm">
+                        <option value="">Selecciona...</option>
+                        <option value="2">2 personas</option>
+                        <option value="4">4 personas</option>   
+                        <option value="6">6 personas</option>
+                        <option value="8">8 personas</option>
+                        <option value="10">10 personas</option>
+                        <option value="12">12 personas</option>
+                        </select>
+                </div>
+                <div>
+                    <label for="cabin-type" class="block text-sm font-medium text-textdark mb-1">Tipo de cabaña</label>
+                    <select id="cabin-type" name="Tipo de Cabaña" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary text-sm">
+                        <option value="">Selecciona...</option>
+                        <option value="refugio-plus">Refugio Plus</option>  
+                        <option value="refugio-vip">Refugio VIP</option>
+                        <option value="refugio-full">Refugio Full</option>
+                        <option value="domo-vip-privado">Domo VIP Privado</option>
+                        </select>
+
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label for="check-in" class="block text-sm font-medium text-textdark mb-1">Llegada</label>
+                        <input type="date" id="check-in" name="Fecha de Llegada" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary text-sm">
+                    </div>
+                    <div>
+                        <label for="check-out" class="block text-sm font-medium text-textdark mb-1">Salida</label>
+                        <input type="date" id="check-out" name="Fecha de Salida" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary text-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-2">
+            <button type="submit" class="w-full bg-primary text-white font-semibold px-6 py-3 rounded-lg text-base hover:bg-blue-800 transition-colors transform hover:scale-105 duration-300">
+                Enviar Mensaje
+            </button>
+        </div>
+    </form>
+    </div>
+
+                    <!-- Info de Contacto con Mapas -->
+                    <div class="fade-in" style="transition-delay: 200ms;">
+                        <div class="bg-neutral p-8 rounded-lg shadow-lg">
+                            <h3 class="text-2xl font-semibold text-primary mb-6">Información de Contacto</h3>
+                            <ul class="space-y-4 text-lg text-textdark">
+                                <li class="flex items-center">
+                                    <i class="fas fa-phone w-6 text-secondary"></i>
+                                    <a href="tel:+56989731947" class="ml-3 hover:text-secondary">+56 9 8973 1947</a>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-envelope w-6 text-secondary"></i>
+                                    <a href="mailto:contacto@refugiodeguanaqueros.cl" class="ml-3 hover:text-secondary">contacto@refugiodeguanaqueros.cl</a>
+                                </li>
+                            </ul>
+
+                            <!-- Mapas de Google -->
+                            <div class="mt-8 space-y-6">
+                                <div>
+                                    <h4 class="text-lg font-semibold text-textdark mb-3">Ubicación 1: Refugio Principal</h4>
+                                    <iframe 
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2877.3537602055712!2d-71.4215324!3d-30.224586900000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9691d9f1434d2903%3A0x1100bbc68966a51d!2sCaba%C3%B1as%20Refugio%20de%20Guanaqueros!5e1!3m2!1ses!2spe!4v1762914710621!5m2!1ses!2spe" 
+                                        width="100%" 
+                                        height="250" 
+                                        style="border:0;" 
+                                        allowfullscreen="" 
+                                        loading="lazy" 
+                                        referrerpolicy="no-referrer-when-downgrade"
+                                        class="rounded-lg shadow-md">
+                                    </iframe>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-textdark mb-3">Ubicación 2: Refugio 2</h4>
+                                    <iframe 
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2877.2429189182208!2d-71.4221321!3d-30.2283752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9691d91a5e99d939%3A0x958bc98b365643c7!2sCaba%C3%B1as%20Refugio%20de%20Guanaqueros%202!5e1!3m2!1ses!2spe!4v1762914756310!5m2!1ses!2spe"
+                                        width="100%" 
+                                        height="250" 
+                                        style="border:0;" 
+                                        allowfullscreen="" 
+                                        loading="lazy" 
+                                        referrerpolicy="no-referrer-when-downgrade"
+                                        class="rounded-lg shadow-md">
+                                    </iframe>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 pt-6 border-t border-gray-300">
+                                <h4 class="text-xl font-semibold text-textdark mb-4">Medios de Pago</h4>
+                                <p class="text-textdark/90">Aceptamos efectivo, transferencia y tarjeta de crédito.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <!-- 
+    ╔════════════════════════════════════════════════╗
+    ║  EDITAR FOOTER:                                ║
+    ║  • Enlaces: Modifica los href y textos         ║
+    ║  • Redes sociales: Cambia los href             ║
+    ║  • Logo: Reemplaza el src de la imagen         ║
+    ╚════════════════════════════════════════════════╝
+    -->
+    <footer class="bg-textdark text-white/80 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Logo y Descripción -->
+                <div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThsm9QsaIHv9lgd9Xds3SHXe54m4nff7dkgw&s" alt="Logo Refugio de Guanaqueros" class="h-16 mb-4">
+                    <p class="text-sm">
+                        Tu refugio junto al mar. Cabañas y turismo en el corazón de Guanaqueros.
+                    </p>
+                </div>
+                
+                <!-- Enlaces Rápidos -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Navegación</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="hover:text-white">Inicio</a></li>
+                        <li><a href="#cabañas" class="hover:text-white">Cabañas</a></li>
+                        <li><a href="#experiencias" class="hover:text-white">Experiencias</a></li>
+                        <li><a href="cotiza.html" class="hover:text-white">Cotiza</a></li>
+                        <li><a href="#contacto" class="hover:text-white">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone w-5"></i>
+                            <a href="tel:+56989731947" class="ml-2 hover:text-white">+56 9 8973 1947</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope w-5"></i>
+                            <a href="mailto:contacto@refugiodeguanaqueros.cl" class="ml-2 hover:text-white">contacto@refugiodeguanaqueros.cl</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt w-5 pt-1"></i>
+                            <span class="ml-2">Guanaqueros, Coquimbo, Chile</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Redes Sociales -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com/refugiodeguanaqueros" target="_blank" aria-label="Facebook" class="text-2xl hover:text-white transition-colors">
+                            <i class="fab fa-facebook-square"></i>
+                        </a>
+                        <a href="https://instagram.com/refugiodeguanaqueros" target="_blank" aria-label="Instagram" class="text-2xl hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com/@refugiodeguanaqueros" target="_blank" aria-label="TikTok" class="text-2xl hover:text-white transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-white/20 pt-8 text-center text-sm">
+                <p>&copy; <span id="current-year"></span> Refugio de Guanaqueros. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== BOTÓN FLOTANTE WHATSAPP (CORREGIDO) ========== -->
+    <!-- 
+    ╔════════════════════════════════════════════════╗
+    ║  Este botón ahora es 100% flotante y no afecta ║
+    ║  el layout de la página en ningún dispositivo  ║
+    ╚════════════════════════════════════════════════╝
+    -->
+    <a href="https://wa.me/56989731947?text=Hola%2C+me+gustar%C3%ADa+consultar+por+una+caba%C3%B1a..." 
+       target="_blank" 
+       id="whatsapp-button"
+       aria-label="Contactar por WhatsApp"
+       class="whatsapp-float">
+        <i class="fab fa-whatsapp text-4xl"></i>
+    </a>
+
+    <!-- ========== SCRIPTS JAVASCRIPT ========== -->
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/contact-form.js"></script>
+
+</body>
+</html>

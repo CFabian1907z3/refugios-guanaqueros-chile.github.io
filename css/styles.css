@@ -1,0 +1,304 @@
+/* 
+╔═══════════════════════════════════════════════════════════╗
+║  ESTILOS PRINCIPALES - Refugio de Guanaqueros            ║
+║  ────────────────────────────────────────────────────────  ║
+║  GUÍA DE EDICIÓN:                                         ║
+║  • Colores principales: Ver variables en :root            ║
+║  • Tipografía: body { font-family }                       ║
+║  • Animaciones: .fade-in y @keyframes                     ║
+║  • Header: #main-header y variantes                       ║
+║                                                            ║
+║  ⚠️ NO elimines clases sin revisar donde se usan          ║
+╚═══════════════════════════════════════════════════════════╝
+*/
+
+/* ========== VARIABLES GLOBALES ========== */
+:root {
+    --primary: #0077B6;
+    --secondary: #00B4D8;
+    --accent: #FFC300;
+    --neutral: #F8F9FA;
+    --textdark: #2C3E50;
+}
+
+/* ========== ESTILOS GENERALES ========== */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--textdark);
+}
+
+/* ========== ANIMACIONES ========== */
+
+/* Fade-in para elementos que entran al viewport */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========== HEADER NAVIGATION ========== */
+
+/* Estado transparente del header (solo en Hero) */
+#main-header.header-transparent {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+#main-header.header-transparent .nav-link,
+#main-header.header-transparent .nav-link-page {
+    color: var(--neutral) !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
+}
+
+#main-header.header-transparent .nav-link:hover,
+#main-header.header-transparent .nav-link-page:hover {
+    color: #FFFFFF !important;
+}
+
+#main-header.header-transparent .nav-link.active,
+#main-header.header-transparent .nav-link-page.active {
+    color: var(--accent) !important;
+    font-weight: 600;
+}
+
+#main-header.header-transparent #mobile-menu-button {
+    color: var(--neutral) !important;
+}
+
+#main-header.header-transparent img {
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4));
+}
+
+/* Estado normal del header (con fondo) */
+#main-header:not(.header-transparent) {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(1px) !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+#main-header:not(.header-transparent) .nav-link,
+#main-header:not(.header-transparent) .nav-link-page {
+    color: var(--textdark) !important;
+    text-shadow: none !important;
+}
+
+#main-header:not(.header-transparent) .nav-link.active,
+#main-header:not(.header-transparent) .nav-link-page.active {
+    color: var(--accent) !important;
+    font-weight: 600;
+}
+
+/* Estilo para enlaces activos */
+.nav-link.active {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Scroll margin para anchors */
+section[id] {
+    scroll-margin-top: 80px;
+}
+
+/* ========== BOTÓN SCROLL DOWN ========== */
+.scroll-down-btn {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    color: white;
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-down-btn:hover {
+    opacity: 1;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* ========== CABAÑAS - HOVER DE 2 IMÁGENES ========== */
+.cabana-image-container {
+    position: relative;
+    width: 100%;
+    height: 15rem;
+}
+
+.cabana-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.cabana-image-container img.img-top {
+    opacity: 1;
+}
+
+.cabana-card:hover .cabana-image-container img.img-top {
+    opacity: 0;
+}
+
+/* ========== GALERÍA - MASONRY ========== */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    padding: 1rem;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========== GALERÍA - CARRUSEL ========== */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.carousel-btn:hover {
+    color: white;
+}
+
+.carousel-btn.prev {
+    left: 1rem;
+}
+
+.carousel-btn.next {
+    right: 1rem;
+}
+
+/* ========== FORMULARIO DE CONTACTO ========== */
+#toggle-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* ========== BOTÓN FLOTANTE WHATSAPP (CORREGIDO) ========== */
+/* 
+╔════════════════════════════════════════════════╗
+║  CORRECCIÓN CRÍTICA: Botón WhatsApp Flotante   ║
+║  ──────────────────────────────────────────────  ║
+║  ANTES: El botón afectaba el layout (problema) ║
+║  AHORA: Usa position: fixed correctamente      ║
+╚════════════════════════════════════════════════╝
+*/
+.whatsapp-float {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    width: 4rem;
+    height: 4rem;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #20BA5A;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Asegurar que el botón no afecte el flujo del documento */
+.whatsapp-float {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ========== TABLA DE PRECIOS ========== */
+.price-table thead {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
+.price-table tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.price-table tbody tr:nth-child(even) {
+    background-color: var(--neutral);
+}

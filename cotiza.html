@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precios y Cotización - Refugio de Guanaqueros</title>
+
+    <!-- 
+    ╔═══════════════════════════════════════════════════════════╗
+    ║  GUÍA DE EDICIÓN - PÁGINA DE PRECIOS                     ║
+    ║  ────────────────────────────────────────────────────────  ║
+    ║  PARA EDITAR PRECIOS:                                     ║
+    ║  • Busca las etiquetas <td> con clase "text-accent"      ║
+    ║  • Modifica los valores directamente                     ║
+    ║  • Los precios están en la tabla principal               ║
+    ║                                                            ║
+    ║  PARA EDITAR INFORMACIÓN:                                 ║
+    ║  • Servicios adicionales: Sección al final de la tabla   ║
+    ║  • Horarios: Sección "Información de Estadía"            ║
+    ╚═══════════════════════════════════════════════════════════╝
+    -->
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Configuración de Colores de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0077B6',
+                        secondary: '#00B4D8',
+                        accent: '#FFC300',
+                        neutral: '#F8F9FA',
+                        textdark: '#2C3E50'
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Estilos CSS Personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="bg-white">
+
+    <!-- ========== HEADER / NAVEGACIÓN ========== -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="nav-link-page">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThsm9QsaIHv9lgd9Xds3SHXe54m4nff7dkgw&s" alt="Logo Refugio de Guanaqueros" class="h-12 md:h-16">
+            </a>
+
+            <!-- Menú Desktop -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html#home" class="nav-link">Inicio</a>
+                <a href="index.html#cabañas" class="nav-link">Cabañas</a>
+                <a href="index.html#experiencias" class="nav-link">Experiencias</a>
+                <a href="index.html#galeria" class="nav-link">Galería</a>
+                <a href="cotiza.html" class="nav-link active">Cotiza con Nosotros</a>
+                <a href="index.html#contacto" class="nav-link">Contacto</a>
+                <a href="https://refugiodeguanaqueros.cl/" target="_blank" class="bg-accent text-textdark font-semibold px-5 py-2 rounded-full hover:bg-yellow-400 transition-colors">
+                    Reservar ahora
+                </a>
+            </div>
+
+            <!-- Botón Menú Móvil -->
+            <button id="mobile-menu-button" class="md:hidden text-textdark text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg py-4">
+            <a href="index.html#home" class="block text-center px-4 py-3 text-textdark hover:bg-neutral">Inicio</a>
+            <a href="index.html#cabañas" class="block text-center px-4 py-3 text-textdark hover:bg-neutral">Cabañas</a>
+            <a href="index.html#experiencias" class="block text-center px-4 py-3 text-textdark hover:bg-neutral">Experiencias</a>
+            <a href="index.html#galeria" class="block text-center px-4 py-3 text-textdark hover:bg-neutral">Galería</a>
+            <a href="cotiza.html" class="block text-center px-4 py-3 text-textdark hover:bg-neutral bg-neutral font-semibold">Cotiza con Nosotros</a>
+            <a href="index.html#contacto" class="block text-center px-4 py-3 text-textdark hover:bg-neutral">Contacto</a>
+            <a href="https://refugiodeguanaqueros.cl/" target="_blank" class="block text-center bg-accent text-textdark font-semibold mx-4 mt-2 py-3 rounded-full hover:bg-yellow-400 transition-colors">
+                Reservar ahora
+            </a>
+        </div>
+    </header>
+
+    <!-- ========== CONTENIDO PRINCIPAL ========== -->
+    <main class="pt-24 pb-16 md:pt-32">
+        
+        <!-- ========== SECCIÓN DE PRECIOS ========== -->
+        <section class="py-16 md:py-24 bg-neutral">
+            <div class="container mx-auto px-6">
+                <!-- Título -->
+                <div class="text-center max-w-3xl mx-auto mb-12 fade-in">
+                    <p class="text-secondary text-sm font-semibold tracking-widest uppercase mb-2">Tarifas</p>
+                    <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">Nuestros Precios</h1>
+                    <p class="text-lg text-textdark/90">
+                        Estos son nuestros valores por noche. Elige la cabaña que más se acomode a tus necesidades.
+                    </p>
+                </div>
+
+                <!-- Tabla de Precios -->
+                <!-- 
+                ╔════════════════════════════════════════════════╗
+                ║  EDITAR PRECIOS AQUÍ:                          ║
+                ║  Busca las celdas con clase "text-accent"     ║
+                ║  Cada precio está en formato $XX.XXX          ║
+                ╚════════════════════════════════════════════════╝
+                -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden fade-in">
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-[1000px] price-table">
+                            <thead class="bg-gradient-to-r from-primary to-secondary text-white text-left">
+                                <tr>
+                                    <th class="p-4 font-semibold border-r border-white/20">Personas</th>
+                                    <th class="p-4 font-semibold border-r border-white/20">Equipamiento</th>
+                                    <th class="p-4 font-semibold border-r border-white/20">Refugio Plus</th>
+                                    <th class="p-4 font-semibold border-r border-white/20">Refugio VIP</th>
+                                    <th class="p-4 font-semibold border-r border-white/20">Refugio Full</th>
+                                    <th class="p-4 font-semibold">Domo VIP Privado</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-textdark">
+                                <tr class="border-b border-gray-200">
+                                    <td data-label="Personas" class="p-4 font-semibold">2 Personas</td>
+                                    <td data-label="Equipamiento" class="p-4 equip-cell">Cama 2 Plazas</td>
+                                    <td data-label="Refugio Plus" class="p-4 text-accent font-medium">$75.000</td>
+                                    <td data-label="Refugio VIP" class="p-4 text-accent font-medium">$85.000</td>
+                                    <td data-label="Refugio Full" class="p-4 text-accent font-medium">$100.000</td>
+                                    <td data-label="Domo VIP" class="p-4 text-accent font-medium">$100.000</td>
+                                </tr>
+                                <tr class="bg-neutral border-b border-gray-200">
+                                    <td data-label="Personas" class="p-4 font-semibold">3 Personas</td>
+                                    <td data-label="Equipamiento" class="p-4 equip-cell">Cama de 2 Plazas + Cama 1 Plaza o Futon</td>
+                                    <td data-label="Refugio Plus" class="p-4 text-accent font-medium">$85.000</td>
+                                    <td data-label="Refugio VIP" class="p-4 text-accent font-medium">$95.000</td>
+                                    <td data-label="Refugio Full" class="p-4 text-accent font-medium">$110.000</td>
+                                    <td data-label="Domo VIP" class="p-4 text-accent font-medium">$110.000</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td data-label="Personas" class="p-4 font-semibold">4 Personas</td>
+                                    <td data-label="Equipamiento" class="p-4 equip-cell">Cama de 2 Plazas + 2 Camas 1 Plaza o Cama Nido</td>
+                                    <td data-label="Refugio Plus" class="p-4 text-accent font-medium">$95.000</td>
+                                    <td data-label="Refugio VIP" class="p-4 text-accent font-medium">$105.000</td>
+                                    <td data-label="Refugio Full" class="p-4 text-accent font-medium">$120.000</td>
+                                    <td data-label="Domo VIP" class="p-4 text-accent font-medium">$120.000</td>
+                                </tr>
+                                <tr class="bg-neutral border-b border-gray-200">
+                                    <td data-label="Personas" class="p-4 font-semibold">5 Personas</td>
+                                    <td data-label="Equipamiento" class="p-4 equip-cell">Cama de 2 Plazas + 3 Camas 1 Plaza o Futon</td>
+                                    <td data-label="Refugio Plus" class="p-4 text-accent font-medium">$105.000</td>
+                                    <td data-label="Refugio VIP" class="p-4 text-accent font-medium">$115.000</td>
+                                    <td data-label="Refugio Full" class="p-4 text-accent font-medium">$130.000</td>
+                                    <td data-label="Domo VIP" class="p-4 text-accent font-medium">$130.000</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td data-label="Personas" class="p-4 font-semibold">6 Personas</td>
+                                    <td data-label="Equipamiento" class="p-4 equip-cell">Cama de 2 Plazas + 2 Camas 1 Plaza + Cama Nido</td>
+                                    <td data-label="Refugio Plus" class="p-4 text-accent font-medium">$115.000</td>
+                                    <td data-label="Refugio VIP" class="p-4 text-accent font-medium">$125.000</td>
+                                    <td data-label="Refugio Full" class="p-4 text-accent font-medium">$140.000</td>
+                                    <td data-label="Domo VIP" class="p-4"></td>
+                                </tr>
+                                <tr class="bg-neutral border-b border-gray-200">
+                                    <td data-label="Personas" class="p-4 font-semibold">10 Personas</td>
+                                    <td data-label="Equipamiento" class="p-4 equip-cell">2 Cama de 2 Plazas + 4 Camas 1 Plaza + Cama Nido</td>
+                                    <td data-label="Refugio Plus" class="p-4"></td>
+                                    <td data-label="Refugio VIP" class="p-4"></td>
+                                    <td data-label="Refugio Full" class="p-4 text-accent font-medium">$190.000</td>
+                                    <td data-label="Domo VIP" class="p-4"></td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td data-label="Personas" class="p-4 font-semibold">12 Personas</td>
+                                    <td data-label="Equipamiento" class="p-4 equip-cell">2 Cama de 2 Plazas + 4 Camas 1 Plaza + Futon + Cama Nido</td>
+                                    <td data-label="Refugio Plus" class="p-4"></td>
+                                    <td data-label="Refugio VIP" class="p-4"></td>
+                                    <td data-label="Refugio Full" class="p-4 text-accent font-medium">$210.000</td>
+                                    <td data-label="Domo VIP" class="p-4"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Descripción de Planes -->
+                    <!-- 
+                    ╔════════════════════════════════════════════════╗
+                    ║  EDITAR DESCRIPCIONES DE PLANES AQUÍ          ║
+                    ╚════════════════════════════════════════════════╝
+                    -->
+                    <div class="p-6 bg-gray-50 border-t border-gray-200 text-sm text-textdark/90 space-y-3">
+                        <h4 class="font-semibold text-lg text-primary mb-3">Descripción de Planes</h4>
+                        <p><strong>Refugio Plus:</strong> Terraza con Parrilla, Tinaja Privada (Sin límite de Horario), Cama de Cuarzo Privada, Acceso a Piscina y Estacionamiento.</p>
+                        <p><strong>Refugio VIP:</strong> Terraza con Parrilla, Tinaja Privada (Sin límite de Horario), Cama de Cuarzo Privada, Acceso a Piscina, Sauna y Estacionamiento.</p>
+                        <p><strong>Refugio Full:</strong> Terraza con Parrilla, Tinaja Privada (Sin límite de Horario), Cama de Cuarzo Privada, Piscina Privada, Sesión de Sauna y Estacionamiento.</p>
+                        <p><strong>Domo VIP Privado:</strong> Terraza con Parrilla, Tinaja Privada (Sin límite de Horario), Piscina Privada, Cama de Cuarzo Privada y Estacionamiento.</p>
+                    </div>
+                </div>
+
+                <!-- Notas Informativas -->
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 fade-in">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold text-primary mb-4">Información de Estadía</h3>
+                        <ul class="list-disc list-inside space-y-2 text-textdark/90">
+                            <li><strong>Check in (Entrada):</strong> desde las 15:00 Hrs hasta las 20:30 Hrs.</li>
+                            <li><strong>Check out (Salida):</strong> hasta las 12:00 Hrs (Mediodía).</li>
+                            <li>La Estadía mínima de todas las cabañas son 2 noches.</li>
+                            <li>La Estadía de solo una noche tiene un Recargo de $5.000 x Persona (Sujeto a Disponibilidad).</li>
+                            <li>Solo niños menores de 3 años no pagan.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold text-primary mb-4">Servicios Adicionales</h3>
+                        <ul class="list-disc list-inside space-y-2 text-textdark/90">
+                            <li><strong>Sesión de Sauna 1 Hora</strong> hasta 4 Personas: <strong>$20.000</strong>.</li>
+                            <li>Incluye 2 Sacos de leña x día, Valor Saco de leña adicional <strong>$8.000</strong>.</li>
+                            <li>Persona adicional tiene un valor de <strong>$15.000 x Noche</strong>.</li>
+                            <li><strong>Medios de pago:</strong> Efectivo, transferencia y tarjeta de crédito.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Botón de Reserva -->
+                <div class="text-center mt-12 fade-in">
+                    <a href="https://refugiodeguanaqueros.cl/" target="_blank" class="bg-accent text-textdark font-semibold px-10 py-4 rounded-full text-xl hover:bg-yellow-400 transition-colors transform hover:scale-105 duration-300 inline-block">
+                        Reservar ahora
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-textdark text-white/80 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThsm9QsaIHv9lgd9Xds3SHXe54m4nff7dkgw&s" alt="Logo Refugio de Guanaqueros" class="h-16 mb-4">
+                    <p class="text-sm">
+                        Tu refugio junto al mar. Cabañas y turismo en el corazón de Guanaqueros.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Navegación</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#home" class="hover:text-white">Inicio</a></li>
+                        <li><a href="index.html#cabañas" class="hover:text-white">Cabañas</a></li>
+                        <li><a href="index.html#experiencias" class="hover:text-white">Experiencias</a></li>
+                        <li><a href="cotiza.html" class="hover:text-white">Cotiza</a></li>
+                        <li><a href="index.html#contacto" class="hover:text-white">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone w-5"></i>
+                            <a href="tel:+56989731947" class="ml-2 hover:text-white">+56 9 8973 1947</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope w-5"></i>
+                            <a href="mailto:contacto@refugiodeguanaqueros.cl" class="ml-2 hover:text-white">contacto@refugiodeguanaqueros.cl</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt w-5 pt-1"></i>
+                            <span class="ml-2">Guanaqueros, Coquimbo, Chile</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com/refugiodeguanaqueros" target="_blank" aria-label="Facebook" class="text-2xl hover:text-white transition-colors">
+                            <i class="fab fa-facebook-square"></i>
+                        </a>
+                        <a href="https://instagram.com/refugiodeguanaqueros" target="_blank" aria-label="Instagram" class="text-2xl hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com/@refugiodeguanaqueros" target="_blank" aria-label="TikTok" class="text-2xl hover:text-white transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/20 pt-8 text-center text-sm">
+                <p>&copy; <span id="current-year"></span> Refugio de Guanaqueros. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== BOTÓN FLOTANTE WHATSAPP ========== -->
+    <a href="https://wa.me/56989731947?text=Hola%2C+me+gustar%C3%ADa+consultar+por+una+caba%C3%B1a..." 
+       target="_blank" 
+       id="whatsapp-button"
+       aria-label="Contactar por WhatsApp"
+       class="whatsapp-float">
+        <i class="fab fa-whatsapp text-4xl"></i>
+    </a>
+
+    <!-- ========== SCRIPTS JAVASCRIPT ========== -->
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+
+</body>
+</html>

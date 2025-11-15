@@ -1,0 +1,206 @@
+/* 
+╔═══════════════════════════════════════════════════════════╗
+║  ESTILOS RESPONSIVE - Refugio de Guanaqueros             ║
+║  ────────────────────────────────────────────────────────  ║
+║  GUÍA DE EDICIÓN:                                         ║
+║  • Breakpoints: 768px (tabletas) y móviles               ║
+║  • Tabla de precios móvil: Media query @media            ║
+║  • Botón WhatsApp: Ajustes para móvil                    ║
+║                                                            ║
+║  ⚠️ Las correcciones de responsive están aquí             ║
+╚═══════════════════════════════════════════════════════════╝
+*/
+
+/* ========== TABLA DE PRECIOS - VISTA MÓVIL ========== */
+@media (max-width: 768px) {
+    /* Ocultar encabezados de tabla en móvil */
+    .price-table thead {
+        display: none;
+    }
+    
+    /* Convertir filas en bloques */
+    .price-table tbody,
+    .price-table tr,
+    .price-table td {
+        display: block;
+        width: 100%;
+    }
+    
+    /* Estilo de tarjetas para cada fila */
+    .price-table tr {
+        margin-bottom: 1.5rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+    
+    /* Celdas con etiquetas */
+    .price-table td {
+        padding-left: 50%;
+        position: relative;
+        text-align: right;
+        border: none;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    
+    /* Etiquetas antes de cada celda */
+    .price-table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 1.25rem;
+        font-weight: 600;
+        text-align: left;
+        white-space: nowrap;
+    }
+    
+    /* Celda de equipamiento */
+    .price-table .equip-cell {
+        padding-left: 1.25rem;
+        text-align: left;
+        background-color: #F8F9FA;
+    }
+    
+    .price-table .equip-cell:before {
+        content: "";
+    }
+}
+
+/* ========== BOTÓN WHATSAPP - AJUSTES MÓVIL ========== */
+/* 
+╔════════════════════════════════════════════════╗
+║  CORRECCIÓN CRÍTICA: Botón en móviles          ║
+║  ──────────────────────────────────────────────  ║
+║  Ajustes para pantallas pequeñas sin afectar   ║
+║  el layout o causar scroll horizontal          ║
+╚════════════════════════════════════════════════╝
+*/
+@media (max-width: 640px) {
+    /* Botón más pequeño en móviles */
+    .whatsapp-float {
+        width: 3.5rem;
+        height: 3.5rem;
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .whatsapp-float i {
+        font-size: 2rem;
+    }
+}
+
+/* Prevenir overflow horizontal causado por elementos fixed */
+html, body {
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ========== AJUSTES GENERALES MÓVIL ========== */
+@media (max-width: 640px) {
+    /* Hero section más pequeño en móviles */
+    #home {
+        min-height: 70vh;
+    }
+    
+    /* Títulos más pequeños */
+    h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.2;
+    }
+    
+    h2 {
+        font-size: 2rem !important;
+    }
+    
+    /* Padding reducido en secciones */
+    section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Galería más compacta */
+    .gallery-item {
+        height: 12rem !important;
+    }
+    
+    /* Carruseles más pequeños */
+    .carousel-container {
+        height: 250px !important;
+    }
+    
+    .carousel-btn {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-btn.prev {
+        left: 0.5rem;
+    }
+    
+    .carousel-btn.next {
+        right: 0.5rem;
+    }
+}
+
+/* ========== TABLETAS (768px - 1024px) ========== */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Ajustes intermedios para tabletas */
+    .container {
+        max-width: 100%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    
+    /* Grid de cabañas en 2 columnas */
+    #cabañas .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ========== DESKTOP GRANDE (> 1280px) ========== */
+@media (min-width: 1280px) {
+    /* Contenedor más ancho en pantallas grandes */
+    .container {
+        max-width: 1280px;
+    }
+}
+
+/* ========== PREVENCIÓN DE PROBLEMAS COMUNES ========== */
+
+/* Prevenir que las imágenes causen overflow */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Prevenir que los iframes causen overflow */
+iframe {
+    max-width: 100%;
+}
+
+/* Asegurar que elementos fixed no afecten el scroll */
+.fixed {
+    position: fixed;
+    margin: 0 !important;
+}
+
+/* ========== MEJORAS DE RENDIMIENTO MÓVIL ========== */
+
+/* Suavizar animaciones en móviles */
+@media (max-width: 768px) {
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Reducir animaciones complejas */
+    .fade-in {
+        transition: opacity 0.3s ease-out;
+        transform: none !important;
+    }
+    
+    /* Botones más táctiles */
+    a, button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
