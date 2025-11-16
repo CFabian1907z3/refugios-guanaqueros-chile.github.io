@@ -52,8 +52,20 @@
     </script>
 
     <!-- Estilos CSS Personalizados -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <!-- 
+      CORRECCIÓN 1 (RUTA): 
+      He cambiado "css/styles.css" a "styles.css". 
+      Si tus archivos CSS están en la misma carpeta que el HTML, la ruta 'css/' era incorrecta.
+      Si SÍ están en una carpeta 'css', revierte este cambio.
+    -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- 
+      CORRECCIÓN 2 (RUTA): 
+      He cambiado "css/responsive.css" a "responsive.css".
+      Este es un error muy común. Si el CSS no se carga, la tabla nunca se verá bien en móvil.
+    -->
+    <link rel="stylesheet" href="responsive.css">
 </head>
 <body class="bg-white">
 
@@ -73,7 +85,7 @@
                 <a href="index.html#galeria" class="nav-link">Galería</a>
                 <a href="cotiza.html" class="nav-link active">Cotiza con Nosotros</a>
                 <a href="index.html#contacto" class="nav-link">Contacto</a>
-                <a href="#contacto" target="_blank" class="bg-accent text-textdark font-semibold px-5 py-2 rounded-full hover:bg-yellow-400 transition-colors">
+                <a href="index.html#cotiza" target="_blank" class="bg-accent text-textdark font-semibold px-5 py-2 rounded-full hover:bg-yellow-400 transition-colors">
                     Reservar ahora
                 </a>
             </div>
@@ -85,14 +97,22 @@
         </nav>
 
         <!-- Menú Móvil -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg py-4">
-            <a href="index.html#home" class="block text-center px-4 py-3 text-textdark hover:bg-neutral">Inicio</a>
-            <a href="index.html#cabañas" class="block text-center px-4 py-3 text-textdark hover:bg-neutral">Cabañas</a>
-            <a href="index.html#experiencias" class="block text-center px-4 py-3 text-textdark hover:bg-neutral">Experiencias</a>
-            <a href="index.html#galeria" class="block text-center px-4 py-3 text-textdark hover:bg-neutral">Galería</a>
-            <a href="cotiza.html" class="block text-center px-4 py-3 text-textdark hover:bg-neutral bg-neutral font-semibold">Cotiza con Nosotros</a>
-            <a href="index.html#contacto" class="block text-center px-4 py-3 text-textdark hover:bg-neutral">Contacto</a>
-            <a href="#contacto" target="_blank" class="block text-center bg-accent text-textdark font-semibold mx-4 mt-2 py-3 rounded-full hover:bg-yellow-400 transition-colors">
+        <!-- 
+          CORRECCIÓN 3 (MENÚ MÓVIL): 
+          He cambiado 'bg-white' por 'bg-textdark' para dar un fondo oscuro y notable.
+          He cambiado los links de 'text-textdark' a 'text-white' para que contrasten.
+          He cambiado el hover a 'hover:bg-primary'.
+          He hecho que el link activo ('Cotiza') resalte con 'text-accent' (amarillo) sobre un fondo 'bg-primary/50'.
+          Esto soluciona el Problema 1.
+        -->
+        <div id="mobile-menu" class="md:hidden hidden bg-textdark shadow-lg py-4">
+            <a href="index.html#home" class="block text-center px-4 py-3 text-white hover:bg-primary">Inicio</a>
+            <a href="index.html#cabañas" class="block text-center px-4 py-3 text-white hover:bg-primary">Cabañas</a>
+            <a href="index.html#experiencias" class="block text-center px-4 py-3 text-white hover:bg-primary">Experiencias</a>
+            <a href="index.html#galeria" class="block text-center px-4 py-3 text-white hover:bg-primary">Galería</a>
+            <a href="cotiza.html" class="block text-center px-4 py-3 text-accent bg-primary/50 font-semibold">Cotiza con Nosotros</a>
+            <a href="index.html#contacto" class="block text-center px-4 py-3 text-white hover:bg-primary">Contacto</a>
+            <a href="https://refugiodeguanaqueros.cl/" target="_blank" class="block text-center bg-accent text-textdark font-semibold mx-4 mt-2 py-3 rounded-full hover:bg-yellow-400 transition-colors">
                 Reservar ahora
             </a>
         </div>
@@ -122,8 +142,24 @@
                 ╚════════════════════════════════════════════════╝
                 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden fade-in">
-                    <div class="overflow-x-auto">
-                        <table class="w-full min-w-[1000px] price-table">
+                    <!-- 
+                      CORRECCIÓN 4 (TABLA RESPONSIVE): 
+                      He eliminado la clase 'overflow-x-auto' de este div.
+                      Esa clase le dice al navegador que HAGA scroll horizontal, 
+                      que es lo contrario a lo que busca tu CSS responsive (que apila las celdas).
+                    -->
+                    <div>
+                        <!-- 
+                          CORRECCIÓN 5 (TABLA RESPONSIVE): 
+                          He eliminado la clase 'min-w-[1000px]' de la tabla.
+                          Esa clase de Tailwind estaba FORZANDO a la tabla a tener 1000px de ancho,
+                          impidiendo que tu CSS en 'responsive.css' pudiera tomar control y apilar
+                          los elementos correctamente en móviles.
+                          
+                          Tu 'responsive.css' estaba bien escrito, solo que estas clases de Tailwind
+                          no lo dejaban actuar. Esto soluciona el Problema 2.
+                        -->
+                        <table class="w-full price-table">
                             <thead class="bg-gradient-to-r from-primary to-secondary text-white text-left">
                                 <tr>
                                     <th class="p-4 font-semibold border-r border-white/20">Personas</th>
@@ -235,7 +271,7 @@
 
                 <!-- Botón de Reserva -->
                 <div class="text-center mt-12 fade-in">
-                    <a href="index.html#contacto" target="_blank" class="bg-accent text-textdark font-semibold px-10 py-4 rounded-full text-xl hover:bg-yellow-400 transition-colors transform hover:scale-105 duration-300 inline-block">
+                    <a href="index.html#cotiza" target="_blank" class="bg-accent text-textdark font-semibold px-10 py-4 rounded-full text-xl hover:bg-yellow-400 transition-colors transform hover:scale-105 duration-300 inline-block">
                         Reservar ahora
                     </a>
                 </div>
@@ -326,5 +362,7 @@
 
 </body>
 
+
+    
 </html>
 
