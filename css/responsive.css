@@ -1,17 +1,16 @@
-/* 
-╔═══════════════════════════════════════════════════════════╗
-║  ESTILOS RESPONSIVE - Refugio de Guanaqueros             ║
+/* ╔═══════════════════════════════════════════════════════════╗
+║  ESTILOS RESPONSIVE - Refugio de Guanaqueros (Final)     ║
 ║  ────────────────────────────────────────────────────────  ║
 ║  GUÍA DE EDICIÓN:                                         ║
 ║  • Breakpoints: 768px (tabletas) y móviles               ║
 ║  • Tabla de precios móvil: Media query @media            ║
 ║  • Botón WhatsApp: Ajustes para móvil                    ║
 ║                                                            ║
-║  ⚠️ Las correcciones de responsive están aquí             ║
+║  ⚠️ CORRECCIÓN 2: Tabla de precios 100% rediseñada.       ║
 ╚═══════════════════════════════════════════════════════════╝
 */
 
-/* ========== TABLA DE PRECIOS - VISTA MÓVIL ========== */
+/* ========== TABLA DE PRECIOS - VISTA MÓVIL (¡CORREGIDO!) ========== */
 @media (max-width: 768px) {
     /* Ocultar encabezados de tabla en móvil */
     .price-table thead {
@@ -32,44 +31,93 @@
         border: 1px solid #e2e8f0;
         border-radius: 0.5rem;
         overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     }
     
-    /* Celdas con etiquetas */
+    /* Celdas apiladas (¡NUEVO ESTILO!) */
     .price-table td {
-        padding-left: 50%;
-        position: relative;
-        text-align: right;
+        display: flex; /* Usar flexbox para alinear label y valor */
+        justify-content: space-between; /* Pone el label a la izq y valor a la der */
+        align-items: center;
+        padding: 0.85rem 1.25rem; /* Padding vertical y horizontal */
+        text-align: right; /* Alinear el valor a la derecha */
         border: none;
         border-bottom: 1px solid #e2e8f0;
+        width: 100%; /* Asegurar que ocupe todo el ancho */
+    }
+
+    /* Quitar borde de la última celda de cada fila */
+    .price-table tr td:last-child {
+        border-bottom: none;
     }
     
-    /* Etiquetas antes de cada celda */
+    /* Etiquetas (data-label) */
     .price-table td:before {
         content: attr(data-label);
-        position: absolute;
-        left: 0;
-        width: 45%;
-        padding-left: 1.25rem;
+        text-align: left;
         font-weight: 600;
-        text-align: left;
-        white-space: nowrap;
+        color: #2C3E50; /* textdark, para que resalte */
+        white-space: normal; /* Permitir que el texto se ajuste */
+        padding-right: 1rem; /* Espacio entre label y valor */
+        
+        /* Eliminar posicionamiento absoluto */
+        position: static;
+        width: auto;
+        padding-left: 0;
     }
-    
-    /* Celda de equipamiento */
+
+    /* Celda de equipamiento (¡NUEVO ESTILO MÁS SIMPLE!) */
     .price-table .equip-cell {
-        padding-left: 1.25rem;
+        /* Queremos que esta celda sea diferente, el label arriba y el texto abajo */
+        display: block; /* Volver a block */
         text-align: left;
-        background-color: #F8F9FA;
+        background-color: #F8F9FA; /* neutral */
+        padding: 1.25rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
     }
     
     .price-table .equip-cell:before {
+        /* Mostrar el label "Equipamiento" como un título */
+        content: attr(data-label);
+        display: block;
+        font-weight: 600;
+        color: #0077B6; /* primary, para que resalte */
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        
+        /* Eliminar posicionamiento absoluto */
+        position: static;
+        width: auto;
+        padding-left: 0;
+    }
+    
+    /* Celda de personas (la primera) la haremos más grande, como título de la "tarjeta" */
+    .price-table tr td:first-child {
+        background-color: #0077B6; /* primary */
+        color: white;
+        font-size: 1.125rem; /* más grande */
+        font-weight: 700;
+        padding: 1rem 1.25rem;
+        justify-content: flex-end; /* Alinear el texto a la derecha */
+    }
+    
+    .price-table tr td:first-child:before {
+        /* Ocultamos el data-label "Personas" y mostramos solo el valor */
         content: "";
+        padding-right: 0;
+        display: none;
+    }
+    
+    /* Ocultar celdas vacías en móvil (SÚPER IMPORTANTE) */
+    .price-table td:empty {
+        display: none;
     }
 }
 
+
 /* ========== BOTÓN WHATSAPP - AJUSTES MÓVIL ========== */
-/* 
-╔════════════════════════════════════════════════╗
+/* ╔════════════════════════════════════════════════╗
 ║  CORRECCIÓN CRÍTICA: Botón en móviles          ║
 ║  ──────────────────────────────────────────────  ║
 ║  Ajustes para pantallas pequeñas sin afectar   ║
@@ -203,4 +251,12 @@ iframe {
         min-height: 44px;
         min-width: 44px;
     }
+}
+    
+    /* Botones más táctiles */
+    a, button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
 }
